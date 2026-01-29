@@ -9,26 +9,14 @@ include:
 
 variables:
   catalog:
-    default: "main"
+    default: "serverless_pjv2uu_catalog"
   database:
     default: ${resources.schemas.project_schema.name}
   flights_dlt_schema:
     default: ${resources.schemas.project_schema.name}_dlt
   flights_test_schema:
     default: "${resources.schemas.project_schema.name}_validation"
-  spark_version:
-    default: "15.3.x-scala2.12"
-  node_type_id:
-    default: "m6gd.xlarge"
-  shared_cluster_config:
-    type: "complex"
-    default:
-      spark_version: ${var.spark_version}
-      node_type_id: ${var.node_type_id}
-      data_security_mode: USER_ISOLATION
-      autoscale:
-          min_workers: 1
-          max_workers: 2
+
 
 targets:
   # The 'dev' target, used for development purposes.
@@ -40,7 +28,7 @@ targets:
     mode: development
     default: true
     workspace:
-      host: https://company-dev.cloud.databricks.com/
+      host: https://fevm-serverless-pjv2uu.cloud.databricks.com
 
     # resource override
     ## Only create this schema in dev, for other targets manage with Terraform.
